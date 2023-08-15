@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="btn btn-secondary position-absolute top-0 mt-1 me-5 end-0">
+  <%= link_to 'Edit task', edit_path, :class => "btn h-25 text-white" %>
+  </div>
+  <h1 class="title"><%= @task.title %></h1>
+  <p><%= @task.details %></p>
+  <%= form_with model: @task do |f| %>
+    <%= f.label :completed %>
+    <%= f.check_box :completed %>
+    <%= f.submit %>
+  <% end %>
+  <p><%= link_to "🗑️", task_path(@task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, :class => "text-decoration-none" %></p>
+  <p><%= link_to 'Back to Tasks list', tasks_path, :class => "text-decoration-none" %></p>
+</div>
